@@ -5,6 +5,7 @@ school = [{'school_class': '4a', 'scores': [3, 4, 4, 5, 2]},
 
 
 def mid_scores(schl):
+    """Функция считает и выводит средний балл для школы и для каждого класса."""
     school_score = 0
     i = 0
     for school_class in schl:
