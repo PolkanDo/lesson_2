@@ -1,4 +1,5 @@
 question_answer = {'как дела?': 'Хорошо!', 'что делаешь?': 'Программирую.',
+                   'отдыхаю': 'Хорошо все то, что хорошо кончается',
                    'проверяю твою программу': 'Давай-давай, тебе понравится.',
                    'чай пью': 'и Я хочу, влей в дисковод ;)', 'ем': 'приятного аппетита',
                    'кино смотрю': 'И ребятам скинь, после курса тоже посмотрят.',
@@ -16,15 +17,20 @@ def ask_user():
     """Функция выводит в консоль ответ, на фразу пользователя."""
     active = True
     while active:
-        question = input("\nЧто делаешь? ")
-        question = question.strip()
-        if question.lower() == 'хорошо':
-            print("Ну и отлично, Пока!")
-            active = False
-        elif question.lower() in question_answer.keys():
-            print(question_answer[question])
+        try:
+            question = input("\nЧто делаешь? ")
+        except KeyboardInterrupt:
+            print('\nПОКА!')
+            break
         else:
-            print("Ответа на это я еще не придумал, так что ответь еще раз.")
+            question = question.strip()
+            if question.lower() == 'Пока':
+                print("Ну и отлично, Пока!")
+                active = False
+            elif question.lower() in question_answer.keys():
+                print(question_answer[question])
+            else:
+                print("Ответа на это я еще не придумал, так что ответь еще раз.")
 
 
 ask_user()
